@@ -1,0 +1,13 @@
+version: '3'
+services:
+  lliwio_nginx:
+    image: nginx/alpine
+    build: ./nginx
+    ports: 
+      - "80:80"
+
+  lliwio_frontend:
+    build: ./ui/src
+    volumes: ./ui/src:/app/src
+    ports:
+      - "5050:5050"
