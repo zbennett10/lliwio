@@ -38,7 +38,11 @@ func convertWordToHex(word string) string {
 		}
 	}
 
-	return hex
+	if len(hex) > 6 {
+		hex = hex[0:6] 
+	}
+
+	return "#" + hex
 }
 
 func parseWords(request *http.Request) []string {
