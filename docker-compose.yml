@@ -5,10 +5,10 @@ services:
     container_name: lliwio_nginx
     volumes:
       - ./nginx/conf.d:/etc/nginx/conf.d
-    ports: 
-      - "80:80"
     depends_on:
       - lliwio_api
+    ports: 
+      - "80:80"
   
   lliwio_api:
     build: ./api

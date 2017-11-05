@@ -1,5 +1,6 @@
 package main
 
+import "fmt"
 import "net/http"
 import "log"
 import "encoding/json"
@@ -56,8 +57,17 @@ func parseWords(request *http.Request) []string {
 	return words.Colors
 }
 
+func handleRoot(response http.ResponseWriter, request *http.Request) {
+	switch(request.Method) {
+	case "GET":
+		fmt.Fprintf(response, "Success!")
+	case "POST":
+		generateColors(response, request)
+	}
+}
+
 func main() {
-	http.HandleFunc("/", generateColors)
+	http.HandleFunc("/", handleRoot)
 
 	log.Fatal(http.ListenAndServe(":8080", nil))
 }
