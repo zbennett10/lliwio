@@ -1,0 +1,9 @@
+FROM golang:1.9.2
+ENV GIN_LADDR 0.0.0.0
+ENV BIN_APP_PORT 8080
+RUN mkdir -p /usr/src/app && \
+    go get github.com/codegangsta/gin
+WORKDIR /usr/src/app
+COPY main.go .
+EXPOSE 3000
+CMD ["gin", "r"]

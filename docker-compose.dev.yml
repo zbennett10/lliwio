@@ -4,7 +4,7 @@ services:
     container_name: lliwio_nginx
     image: nginx:alpine
     volumes:
-      - ./nginx/conf.d:/etc/nginx/conf.d
+      - ./nginx/conf.d/dev:/etc/nginx/conf.d
     depends_on:
       - lliwio_api
     ports: 
@@ -12,10 +12,10 @@ services:
   
   lliwio_api:
     container_name: lliwio_api
-    build: ./api
-
-  # lliwio_frontend:
-  #   build: ./ui/src
-  #   volumes: ./ui/src:/app/src
-  #   ports:
-  #     - "5050:5050"
+    build: 
+      context: ./api
+      dockerfile: Dockerfile-dev
+    volumes:
+      - ./api:/usr/src/app
+    ports:
+      - "3000:3000"

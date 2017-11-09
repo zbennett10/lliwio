@@ -68,6 +68,6 @@ func handleRoot(response http.ResponseWriter, request *http.Request) {
 
 func main() {
 	http.HandleFunc("/", handleRoot)
-
+	fmt.Println("Starting lliwio api on port 8080...")
 	log.Fatal(http.ListenAndServe(":8080", nil))
 }
