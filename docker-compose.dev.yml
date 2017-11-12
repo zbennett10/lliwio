@@ -7,6 +7,7 @@ services:
       - ./nginx/conf.d/dev:/etc/nginx/conf.d
     depends_on:
       - lliwio_api
+      - lliwio_web_vis
     ports: 
       - "80:80"
   
@@ -19,3 +20,16 @@ services:
       - ./api:/usr/src/app
     ports:
       - "3000:3000"
+
+  lliwio_web_vis:
+    container_name: lliwio_web_vis
+    build:
+      context: ./ui
+      dockerfile: Dockerfile-dev
+    volumes:
+      - ./ui/src:/usr/src/app/src
+    depends_on:
+      - lliwio_api
+    ports:
+      - "5050:5050"
+      - "35729:35729"
