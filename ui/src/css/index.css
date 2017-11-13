@@ -1,12 +1,28 @@
 html, body {
-    margin: 0,
-    padding: 0
+    margin: 0;
+    padding: 0;
 }
 
-#app {
+#AppCanvas {
     position: absolute;
     display: block;
     top: 0;
     left: 0;
     z-index: 0;
+}
+
+#AppInputArea {
+    position: absolute;
+    display: block;
+    top: 40%;
+    bottom: 40%;
+    left: 30%;
+    right: 30%;
+    width: 40%;
+    height: 20%;
+    opacity: .8;
+    z-index: 1;
+    border: 1px solid black;
+    box-shadow: 0 0 5px black;
+    resize: none;
 }
